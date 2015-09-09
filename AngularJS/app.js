@@ -29,6 +29,15 @@
         }
     });
 
+
+    app.directive('productTitle', function(){
+       return{
+          //We define how a directive will work here
+           restrict: 'E', //Specyfying a type of a directive in this case an html element <>
+           templateUrl: 'product-title.html' //here we specify the template we want to load to the page
+       };
+    });
+
     //Creating array of  objects
     var gems = [
         {
@@ -57,7 +66,19 @@
             description : 'bow is a very shit gem',
             image : 'images/wow.jpg',
             //This beheiviour is binded to ng-show
-            showTheButton : true
+            showTheButton : true,
+            reviews : [
+                {
+                    starts : 5,
+                    body : "I love this thing",
+                    author : "marcin"
+                },
+                {
+                    starts : 2,
+                    body : "I thing",
+                    author : "tom"
+                }
+            ]
         }
     ];
 

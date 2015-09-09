@@ -7,6 +7,16 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <style>
+        .ng-invalid.ng-dirty{
+            border-color: #b92c28;
+        }
+
+        .ng-valid.ng-dirty{
+            border-color: #398439;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,8 +30,6 @@
     <div ng-controller="StoreControler as store">
 
 
-
-
         <!---------------------------------------->
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
@@ -31,11 +39,7 @@
 
                 <!--You only have access to the parms inside this div-->
                 <h1>
-                    {{product.name}}
-                    <!--Using the currency filter to display currency-->
-                    <!--Between the price and currency we have a PIPE, which will send the result from price to curr-->
-                    <em class="pull-right">{{product.price | currency}}</em>
-
+                    <product-title></product-title>
                 </h1>
 
                 <!---------------------------------------image--->
@@ -91,7 +95,7 @@
                     <!-----------------------------------------------Review Form--->
                     <hr>
                     <form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
-                            ng-submit="reviewCtrl.addReview(product)">
+                            ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
 
                         <!-------------------------This will be bind to the input area and show as you type----->
 
@@ -113,11 +117,15 @@
                         </select>
                         <br>
 
-                        <textarea ng-model="reviewCtrl.review.body"></textarea>
+                        <textarea ng-model="reviewCtrl.review.body" required></textarea>
                         <br>
                         <label>by:</label>
-                        <input ng-model="reviewCtrl.review.author" type="email"/>
+                        <input ng-model="reviewCtrl.review.author" type="email"  required/>
                         <br>
+                        <!--Debig purpose-->
+                        <div>reviewForm is {{reviewForm.$valid}}</div>
+
+
                         <input type="submit" value="Submit"/>
 
                     </form>
