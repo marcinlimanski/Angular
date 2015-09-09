@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<!--Attaching the app module called store-->
+<html ng-app="store">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <!--Displaying a contect by expression-->
+    <h1>Hello {{'Angular Store'}}</h1>
+    <br>
+
+    <!--using a directive to bind the controler-->
+
+    <!--Attaching the controller functionality-->
+    <div ng-controller="StoreControler as store">
+
+
+
+
+        <!---------------------------------------->
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+
+
+                <!-----------------------------------------Content>
+
+                <!--You only have access to the parms inside this div-->
+                <h1>
+                    {{product.name}}
+                    <!--Using the currency filter to display currency-->
+                    <!--Between the price and currency we have a PIPE, which will send the result from price to curr-->
+                    <em class="pull-right">{{product.price | currency}}</em>
+
+                </h1>
+
+                <!---------------------------------------image--->
+                <img ng-src="{{product.image}}"/>
+                <br>
+
+                <!--Tabs-->
+                <!--Init the first tab when reloading the page-->
+                <section ng-init="tab = 1">
+
+                    <ul class="nav nav-pills">
+
+                        <!--Assigining the tabs-->
+                        <!--ng-class='active:tab === 1 uses bootstrap class highliting'-->
+                        <li ng-class="{active:tab === 1}">
+                            <a href="" ng-click="tab = 1">Description</a>
+                        </li>
+                        <li ng-class="{active:tab === 2}">
+                            <a href="" ng-click="tab = 2">Specifications</a>
+                        </li>
+                        <li ng-class="{active:tab === 3}">
+                            <a href="" ng-click="tab = 3">Reviews</a>
+                        </li>
+
+                    </ul>
+
+                </section>
+
+
+
+                <!------------------------------------------Panels-->
+                <!--When a tab will equal to tab expression it will shot it-->
+                <div class="panel" ng-show="tab === 1">
+                    <h4>Description</h4>
+                    <blockquote>{{product.description}}</blockquote>
+                </div>
+
+                <div class="panel" ng-show="tab === 2">
+                    <h4>Specifications</h4>
+                    <blockquote>Not yet implemented</blockquote>
+                </div>
+
+                <div class="panel" ng-show="tab === 3">
+                    <h4>Reviews</h4>
+                    <blockquote>Not yet implemented</blockquote>
+                </div>
+
+                <!----------------------------------------button----->
+                <br>
+                <!--We can bind beheiviours such as showing the button-->
+                <button ng-show="product.showTheButton">Add to cart</button>
+
+
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
