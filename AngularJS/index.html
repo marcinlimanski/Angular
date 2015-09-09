@@ -47,28 +47,7 @@
                 <br>
 
                 <!--Tabs-->
-                <!--Init the first tab when reloading the page-->
-                <section ng-init="tab = 1">
-
-                    <ul class="nav nav-pills">
-
-                        <!--Assigining the tabs-->
-                        <!--ng-class='active:tab === 1 uses bootstrap class highliting'-->
-                        <li ng-class="{active:tab === 1}">
-                            <a href="" ng-click="tab = 1">Description</a>
-                        </li>
-                        <li ng-class="{active:tab === 2}">
-                            <a href="" ng-click="tab = 2">Specifications</a>
-                        </li>
-                        <li ng-class="{active:tab === 3}">
-                            <a href="" ng-click="tab = 3">Reviews</a>
-                        </li>
-
-                    </ul>
-
-                </section>
-
-
+                <tabs-directive></tabs-directive>
 
                 <!------------------------------------------Panels-->
                 <!--When a tab will equal to tab expression it will shot it-->
@@ -143,9 +122,6 @@
         </ul>
 
     </div>
-
-
-
 
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>

@@ -38,6 +38,16 @@
        };
     });
 
+    app.directive('tabsDirective', function(){
+
+        return{
+            restrict: 'E',
+            templateUrl: 'tabs.html'
+        }
+
+
+    });
+
     //Creating array of  objects
     var gems = [
         {
