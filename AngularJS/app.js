@@ -18,6 +18,17 @@
     });
 
 
+    app.controller('ReviewController', function(){
+        this.review = {};
+
+        //product is an object instance from StoreControler.products.product
+        this.addReview = function(product){
+            product.reviews.push(this.review);
+            //This will clear the object
+            this.review = {};
+        }
+    });
+
     //Creating array of  objects
     var gems = [
         {
