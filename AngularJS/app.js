@@ -26,7 +26,19 @@
             description : 'crossbow is a very good gem',
             image : 'images/json.jpeg',
             //This beheiviour is binded to ng-show
-            showTheButton : true
+            showTheButton : true,
+            reviews : [
+                {
+                    starts : 5,
+                    body : "I love this thing",
+                    author : "marcin"
+                },
+                {
+                    starts : 2,
+                    body : "I thing",
+                    author : "tom"
+                }
+            ]
         },
         {
             name : 'Bow',

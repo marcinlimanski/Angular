@@ -80,8 +80,49 @@
 
                 <div class="panel" ng-show="tab === 3">
                     <h4>Reviews</h4>
-                    <blockquote>Not yet implemented</blockquote>
+                    <blockquote ng-repeat="review in product.reviews">
+                        <b>Stars : {{review.starts}}</b>
+                        <br>
+                        {{review.body}}
+                        <br>
+                        <cite>by {{review.author}}</cite>
+                    </blockquote>
+
+                    <!-----------------------------------------------Review Form--->
+                    <hr>
+                    <form name="reviewForm">
+
+                        <!-------------------------This will be bind to the input area and show as you type----->
+
+                        <blockquote>
+                            <b>Stars : {{review.starts}}</b>
+                            <br>
+                            {{review.body}}
+                            <br>
+                            <cite>by {{review.author}}</cite>
+                        </blockquote>
+
+
+                        <!----------------------This in the input area------------->
+                        <select ng-model="review.starts">
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Star</option>
+                            <option value="3">3 Star</option>
+                            <option value="4">4 Star</option>
+                        </select>
+                        <br>
+
+                        <textarea ng-model="review.body"></textarea>
+                        <br>
+                        <label>by:</label>
+                        <input ng-model="review.author" type="email"/>
+                        <br>
+                        <input type="submit" value="Submit"/>
+
+                    </form>
+
                 </div>
+
 
                 <!----------------------------------------button----->
                 <br>
