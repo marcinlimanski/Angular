@@ -5,15 +5,17 @@
 //importing angular
 //Wrapping app in a closure
 (function(){
+
+
     //passing the name of the app and the array of dependencies
-    var app = angular.module('store', []);
+    var app = angular.module('store', ['store-products']); //To use store-products module we need to added it here
 
 
     //Creating controlers
     app.controller('StoreControler', function(){
 
         //this.product is a property of the controler
-        this.products = gems;
+        this.products = items;
 
     });
 
@@ -30,26 +32,8 @@
     });
 
 
-    app.directive('productTitle', function(){
-       return{
-          //We define how a directive will work here
-           restrict: 'E', //Specyfying a type of a directive in this case an html element <>
-           templateUrl: 'product-title.html' //here we specify the template we want to load to the page
-       };
-    });
-
-    app.directive('tabsDirective', function(){
-
-        return{
-            restrict: 'E',
-            templateUrl: 'tabs.html'
-        }
-
-
-    });
-
     //Creating array of  objects
-    var gems = [
+    var items = [
         {
             name : 'Crossbow',
             price : 27,
